@@ -2,6 +2,12 @@
 #include <stdio.h>
 #include <time.h>
 
+/**
+ * main - Assigns a random number to a variable and prints whether
+ * the number stored in the variable is positive, negative, or zero.
+ * Return: Always 0 (Success)
+ */
+
 int main(void)
 {
 int n;
