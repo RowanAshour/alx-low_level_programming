@@ -1,27 +1,27 @@
 #include <stdio.h>
+#include <limits.h>
 
 /**
- * main - prints the first 48 Fibonacci numbers,
- * starting with 1 and 2, followed by a new line.
+ * main - prints the first n Fibonacci numbers, starting with 1 and 2.
  *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-int i;
-double prev = 1, curr = 2, next;
+    int count;
+    unsigned long i = 1, j = 2, t;
 
-printf("%.0f, %.0f", prev, curr); /* print the first two numbers */
+    printf("%lu, %lu", i, j);  /* print the first two numbers */
 
-for (i = 3; i <= 98; i++) /* print the next 96 numbers */
-{
-next = prev + curr;
-printf(", %.0f", next);
-prev = curr;
-curr = next;
+    for (count = 2; count < 98 && j <= ULONG_MAX - i; count++)
+    {
+        t = i + j;
+        printf(", %lu", t);
+        i = j;
+        j = t;
+    }
+    printf("\n");
+
+    return (0);
 }
 
-printf("\n"); /* print a new line at the end */
-
-return (0);
-}
