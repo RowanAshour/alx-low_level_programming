@@ -1,27 +1,34 @@
 #include <stdio.h>
 
 /**
- * main - Entry point of the program
+ * Prints the first n Fibonacci numbers.
  *
- * Return: Always 0 (Success)
+ * @param n The number of Fibonacci numbers to print.
  */
-int main(void)
-{
-	unsigned int fib1 = 1, fib2 = 2, fib_next, count;
+void print_fibonacci_sequence(int n) {
+    int a = 1, b = 2;
+    int i;
 
-	printf("%u, %u", fib1, fib2);
+    printf("%d, %d, ", a, b);
 
-	for (count = 3; count <= 98; count++)
-	{
-		fib_next = fib1 + fib2;
-		printf(", %u", fib_next);
+    for (i = 3; i <= n; i++) {
+        int c = a + b;
+        printf("%d", c);
 
-		fib1 = fib2;
-		fib2 = fib_next;
-	}
+        if (i != n) {
+            printf(", ");
+        }
 
-	printf("\n");
+        a = b;
+        b = c;
+    }
 
-	return (0);
+    printf("\n");
+}
+
+int main() {
+    print_fibonacci_sequence(98);
+
+    return 0;
 }
 
