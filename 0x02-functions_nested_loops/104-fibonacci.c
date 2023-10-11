@@ -13,7 +13,7 @@ double prev = 1, curr = 2, next;
 
 printf("%.0f, %.0f", prev, curr); /* print the first two numbers */
 
-for (i = 3; i <= 96; i++) /* print the next 96 numbers */
+for (i = 3; i <= 98; i++) /* print the next 96 numbers */
 {
 next = prev + curr;
 printf(", %.0f", next);
