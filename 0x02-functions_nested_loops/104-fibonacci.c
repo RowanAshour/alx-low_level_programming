@@ -1,34 +1,28 @@
 #include <stdio.h>
 
 /**
- * main - prints the first Fibonacci numbers that fit in a long
+ * main - prints the first 48 Fibonacci numbers,
+ * starting with 1 and 2, followed by a new line.
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-long i, j, k;
+    int i;
+    double prev = 1, curr = 2, next;
 
-i = 1;
-j = 2;
+    printf("%.0f, %.0f", prev, curr); /* print the first two numbers */
 
-printf("%ld, %ld", i, j);
+    for (i = 3; i <= 98; i++) /* print the next 96 numbers */
+    {
+        next = prev + curr;
+        printf(", %.0f", next);
+        prev = curr;
+        curr = next;
+    }
 
-while (1)
-{
-k = i + j;
+    printf("\n"); /* print a new line at the end */
 
-        /* If k < j, then we've had an overflow and we're done */
-if (k < j)
-{
-printf("\n");
-return (0);
-}
-printf(", %ld", k);
-
-i = j;
-	j = k;
-}
-
-return (0);
+    return (0);
 }
 
