@@ -1,34 +1,34 @@
 #include <stdio.h>
 
 /**
- * Prints the first n Fibonacci numbers.
- *
- * @param n The number of Fibonacci numbers to print.
+ * main - prints the first Fibonacci numbers that fit in a long
+ * Return: Always 0 (Success)
  */
-void print_fibonacci_sequence(int n) {
-    int a = 1, b = 2;
-    int i;
+int main(void)
+{
+long i, j, k;
 
-    printf("%d, %d, ", a, b);
+i = 1;
+j = 2;
 
-    for (i = 3; i <= n; i++) {
-        int c = a + b;
-        printf("%d", c);
+printf("%ld, %ld", i, j);
 
-        if (i != n) {
-            printf(", ");
-        }
+while (1)
+{
+k = i + j;
 
-        a = b;
-        b = c;
-    }
+        /* If k < j, then we've had an overflow and we're done */
+if (k < j)
+{
+printf("\n");
+return (0);
+}
+printf(", %ld", k);
 
-    printf("\n");
+i = j;
+	j = k;
 }
 
-int main() {
-    print_fibonacci_sequence(98);
-
-    return 0;
+return (0);
 }
 
