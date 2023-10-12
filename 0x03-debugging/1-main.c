@@ -13,7 +13,6 @@ int main(void)
 
 	i = 0;
 
-	/* Commented out the code causing the infinite loop */
 	/*
 	*  while (i < 10)
 	{
