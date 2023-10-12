@@ -15,7 +15,7 @@ int main(void)
 
 	/* Commented out the code causing the infinite loop */
 	/*
-	while (i < 10)
+	*  while (i < 10)
 	{
 		putchar(i);
 	}
