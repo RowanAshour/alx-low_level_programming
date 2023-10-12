@@ -3,14 +3,19 @@
 
 int main(void)
 {
-    int month, dayOfMonth;
-    int year = 2022;
-    int day = 365; /* Assuming it's the last day of the year*/
+    int month;
+    int day;
+    int year;
 
-    convert_day(year, day, &month, &dayOfMonth);
-    printf("Date: %d/%d/%d\n", dayOfMonth, month, year);
+    month = 4;
+    day = 1;
+    year = 1997;
 
-    print_remaining_days(month, dayOfMonth, year);
+    printf("Date: %02d/%02d/%04d\n", month, day, year);
 
-    return 0;
+    day = convert_day(month, day);
+
+    print_remaining_days(month, day, year);
+
+    return (0);
 }

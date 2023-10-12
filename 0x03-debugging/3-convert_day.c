@@ -1,30 +1,44 @@
-#include <stdio.h>
 #include "main.h"
 
-/**
- * convert_day - Converts the day of the year to a specific month and day.
- * @year: Year.
- * @day: Day of the year.
- * @month: Pointer to the variable to store the converted month.
- * @dayOfMonth: Pointer to the variable to store the converted day of the month.
- *
- * Return: void
- */
-void convert_day(int year, int day, int *month, int *dayOfMonth)
+int convert_day(int month, int day)
 {
-	int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-	int i;
-
-	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
-		daysInMonth[1] = 29;
-
-	for (i = 0; i < 12; i++)
-	{
-		if (day <= daysInMonth[i])
-			break;
-		day -= daysInMonth[i];
-	}
-
-	*month = i + 1;
-	*dayOfMonth = day;
+    switch (month)
+    {
+        case 2:
+            day = 31 + day;
+            break;
+        case 3:
+            day = 59 + day;
+            break;
+        case 4:
+            day = 90 + day;
+            break;
+        case 5:
+            day = 120 + day;
+            break;
+        case 6:
+            day = 151 + day;
+            break;
+        case 7:
+            day = 181 + day;
+            break;
+        case 8:
+            day = 212 + day;
+            break;
+        case 9:
+            day = 243 + day;
+            break;
+        case 10:
+            day = 273 + day;
+            break;
+        case 11:
+            day = 304 + day;
+            break;
+        case 12:
+            day = 334 + day;
+            break;
+        default:
+            break;
+    }
+    return (day);
 }
