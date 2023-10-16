@@ -9,19 +9,19 @@
  */
 void print_array(int *a, int n)
 {
-    int i;
+int i;
 
-    /* iterate over the array */
-    for (i = 0; i < n; i++)
-    {
-        printf("%d", a[i]); /* print the current element */
+/* iterate over the array */
+for (i = 0; i < n; i++)
+{
+printf("%d", a[i]); /* print the current element */
 
-        /* print a comma and a space after all but the last element */
-        if (i < n - 1)
-        {
-            printf(", ");
-        }
-    }
+/* print a comma and a space after all but the last element */
+if (i < n - 1)
+{
+printf(", ");
+}
+}
 
-    printf("\n"); /* print a new line */
+printf("\n"); /* print a new line */
 }
