@@ -1,32 +1,23 @@
 #include "main.h"
 
 /**
- * print_number - Prints an integer
- * @n: The integer to be printed
+ * print_number - Prints an integer.
  *
- * Description: This function prints an integer using the _putchar function.
- * If the number is negative, it prints a '-' character first.
- * It recursively divides the number by 10 until it becomes 0,
- * then prints each digit.
+ * @n: The integer to print.
  */
 void print_number(int n)
 {
-	if (n == 0)
-	{
-		_putchar('0');
-		return;
-	}
+/* Handle negative numbers */
+if (n < 0)
+{
+_putchar('-');
+n = -n;
+}
 
-	if (n < 0)
-	{
-		_putchar('-');
-		n = -n;
-	}
+/* Recursively print digits */
+if (n / 10)
+print_number(n / 10);
 
-	if (n / 10 != 0)
-	{
-		print_number(n / 10);
-	}
-
-	_putchar((n % 10) + '0');
+/* Print the last digit */
+_putchar('0' + n % 10);
 }
