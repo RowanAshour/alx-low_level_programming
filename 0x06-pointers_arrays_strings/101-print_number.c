@@ -3,23 +3,23 @@
 /**
  * print_number - Prints an integer
  * @n: The integer to be printed
+ *
+ * Description: This function prints an integer using the _putchar function.
+ * If the number is negative, it prints a '-' character first.
+ * It recursively divides the number by 10 until it becomes 0, then prints each digit.
  */
 void print_number(int n)
 {
-	int divisor = 1;
-
 	if (n < 0)
 	{
 		_putchar('-');
 		n = -n;
 	}
 
-	while (n / divisor >= 10)
-		divisor *= 10;
-
-	while (divisor != 0)
+	if (n / 10 != 0)
 	{
-		_putchar((n / divisor) % 10 + '0');
-		divisor /= 10;
+		print_number(n / 10);
 	}
+
+	_putchar((n % 10) + '0');
 }
