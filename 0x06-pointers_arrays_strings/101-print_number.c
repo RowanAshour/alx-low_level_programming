@@ -1,14 +1,28 @@
 #include "main.h"
 
 /**
- * print_number - Prints an unsigned integer.
- *
- * @n: The unsigned integer to print.
+ * print_number - Prints an integer
+ * @n: The integer to be printed
  */
 void print_number(unsigned int n)
 {
-	if (n / 10)
-	print_number(n / 10);
-
-	_putchar('0' + n % 10);
+	unsigned int divisor = 1;
+	unsigned int i, digit;
+	
+	if (n == 0)
+	{
+		_putchar('0');
+		return;
+	}
+	
+	for (i = n; i > 0; i /= 10)
+		divisor *= 10;
+	
+	while (divisor > 0)
+	{
+	      digit = n / divisor;
+		_putchar(digit + '0');
+		n %= divisor;
+		divisor /= 10;
+	}
 }
