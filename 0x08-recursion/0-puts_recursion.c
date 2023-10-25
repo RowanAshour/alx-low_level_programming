@@ -22,11 +22,9 @@ void _puts_recursion(char *s)
 }
 
 /**
- * main - main function
- *
- * Return: Always 0.
+ * test_puts_recursion - tests the _puts_recursion function
  */
-void test_puts_recursion()
+void test_puts_recursion(void)
 {
-_puts_recursion("Puts with recursion");
+	_puts_recursion("Puts with recursion");
 }
