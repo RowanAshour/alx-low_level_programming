@@ -1,52 +1,69 @@
 #include "main.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**
- * strtow - splits a string into words
- * @str: the string to split
+ * word_count - Counts the number of words in a string
+ * @str: The string to count
  *
- * Return: pointer to an array of words
+ * Return: The number of words in the string
+ */
+int word_count(char *str)
+{
+	int i, count = 0;
+
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
+			count++;
+	}
+	return (count);
+}
+
+/**
+ * strtow - Splits a string into words
+ * @str: The string to split
+ *
+ * Return: A pointer to an array of strings (words)
  */
 char **strtow(char *str)
 {
-	int i, j, words = 0, length;
-	char **s;
+	char **words;
+	int i, j, k, l, wc;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
 
-	for (i = 0; str[i]; i++)
-		words += (str[i] == ' ' && str[i + 1] != ' ' && str[i + 1] != '\0');
-
-	s = malloc((words + 1) * sizeof(char *));
-	if (s == NULL)
+	wc = word_count(str);
+	if (wc == 0)
 		return (NULL);
 
-	for (i = 0; *str;)
+	words = malloc((wc + 1) * sizeof(char *));
+	if (words == NULL)
+		return (NULL);
+
+	for (i = 0, j = 0; i < wc; i++)
 	{
-		while (*str == ' ')
-			str++;
+		while (str[j] == ' ')
+			j++;
 
-		if (*str == '\0')
-			break;
-
-		for (length = 0; str[length] != ' ' && str[length]; length++)
+		for (k = j; str[k] != ' ' && str[k] != '\0'; k++)
 			;
 
-		s[i] = malloc((length + 1) * sizeof(char));
-		if (s[i] == NULL)
+		words[i] = malloc((k - j + 1) * sizeof(char));
+		if (words[i] == NULL)
 		{
 			while (i >= 0)
-				free(s[i--]);
-			free(s);
+				free(words[--i]);
+			free(words);
 			return (NULL);
 		}
 
-		for (j = 0; j < length; j++)
-			s[i][j] = *str++;
-		s[i++][j] = '\0';
+		for (l = 0; j < k; j++, l++)
+			words[i][l] = str[j];
+		words[i][l] = '\0';
 	}
-	s[i] = NULL;
+	words[i] = NULL;
 
-	return (s);
+	return (words);
 }
