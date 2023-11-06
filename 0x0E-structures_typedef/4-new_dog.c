@@ -18,7 +18,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 	/* Allocate memory for the new dog */
 	new_dog = malloc(sizeof(dog_t));
 	if (new_dog == NULL)
+	{
 		return (NULL);
+	}
 
 	/* Allocate memory and copy the name */
 	name_copy = strdup(name);
