@@ -10,8 +10,7 @@
 int main(void)
 {
 	/* Print the name of the file */
-	printf("%s\n", __FILE__);
-	
+	printf("%s\n", __FILE__);	
 	/* End program successfully */
 	return (0);
 }
