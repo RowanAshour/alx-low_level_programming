@@ -9,19 +9,23 @@
  *Return: The index of the first element for which cmp does not return 0.
  *        * If no element matches, return -1.
  *         * If size is less than or equal to 0, return -1.
-*/
+ */
 int int_index(int *array, int size, int (*cmp)(int))
 {
 	if (array == NULL || cmp == NULL || size <= 0)
-		return (-1);
+				{
+				return (-1);
+				}
 
 		int i;
 
 		for (i = 0; i < size; i++)
-			{
+		{
 			if (cmp(array[i]) != 0)
-			return (i);
-			}
+					{
+				return (i);
+					}
+		}
 
-			return (-1);
+	return (-1);
 }
