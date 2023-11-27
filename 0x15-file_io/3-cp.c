@@ -9,25 +9,25 @@
  */
 int copy_file_content(int file_from, int file_to)
 {
-	char buffer[BUFFER_SIZE];
-	ssize_t bytesRead;
+    char buffer[BUFFER_SIZE];
+    ssize_t bytesRead;
 
-	while ((bytesRead = read(file_from, buffer, BUFFER_SIZE)) > 0)
-	{
-		if (write(file_to, buffer, bytesRead) != bytesRead)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to file\n");
-			return (99);
-		}
-	}
+    while ((bytesRead = read(file_from, buffer, BUFFER_SIZE)) > 0)
+    {
+        if (write(file_to, buffer, bytesRead) != bytesRead)
+        {
+            dprintf(STDERR_FILENO, "Error: Can't write to file\n");
+            return 99;
+        }
+    }
 
-	if (bytesRead < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file\n");
-		return (98);
-	}
+    if (bytesRead < 0)
+    {
+        dprintf(STDERR_FILENO, "Error: Can't read from file\n");
+        return 98;
+    }
 
-	return (0);
+    return 0;
 }
 
 /**
@@ -38,56 +38,47 @@ int copy_file_content(int file_from, int file_to)
  */
 int close_file(int fd)
 {
-	if (close(fd) < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		return (100);
-	}
+    if (close(fd) < 0)
+    {
+        dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+        return 100;
+    }
 
-	return (0);
+    return 0;
 }
-
-/**
- *main - Entry point for the cp program,copies content from one file to another
- * @argc: Number of command-line arguments.
- * @argv: Array of command-line argument strings.
- *
- * Return: 0 on success, or one of the error codes on failure.
- */
 
 int main(int argc, char **argv)
 {
-	int file_from, file_to;
+    int file_from, file_to;
 
-	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
+    if (argc != 3)
+    {
+        dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+        exit(97);
+    }
 
-	file_from = open(argv[1], O_RDONLY);
-	if (file_from < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
+    file_from = open(argv[1], O_RDONLY);
+    if (file_from < 0)
+    {
+        dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+        exit(98);
+    }
 
-	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (file_to < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+    file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+    if (file_to < 0)
+    {
+        dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+        exit(99);
+    }
 
-	if (copy_file_content(file_from, file_to) != 0)
-		exit(1);
+    if (copy_file_content(file_from, file_to) != 0)
+        exit(1);
 
-	if (close_file(file_from) != 0)
-		exit(1);
+    if (close_file(file_from) != 0)
+        exit(1);
 
-	if (close_file(file_to) != 0)
-		exit(1);
+    if (close_file(file_to) != 0)
+        exit(1);
 
-	return (0);
+    return 0;
 }
-
